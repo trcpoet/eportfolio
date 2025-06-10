@@ -213,4 +213,117 @@ nav {
 .language__name {
     position: absolute; /* Makes sure not to affect the parent's size */
     bottom: 0;
-    /* Brings language to the bottom; bottom
+    /* Brings language to the bottom; bottom 0 relative to the language class */
+    transform: scale(0);
+    /* How to give it the hover effect */
+    transition: all 700ms;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.language:hover .language__name {
+    transform: scale(1);
+    /* When you hover over it it is scaled  */
+    opacity: 1;
+    /* How to fade it in while scaling it  */
+}
+
+
+/* PROJECTS */
+
+.project {
+    margin-bottom: 135px;
+}
+
+.project:last-child {
+    margin-bottom: 40px;
+}
+
+
+.project__img {
+    width: 100%;
+    transition: all 500ms ease;
+}
+
+.project__wrapper {
+    display: flex;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    /* Add position relative to this */
+}
+
+.project__wrapper:before {
+    content:"";
+    position: absolute;
+    /* Does not affect the position of anything */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1c1d25;
+    /* Position relative not on parent */
+    opacity: 0;
+    /* Default opacity */
+    transition: 450ms ease;
+    z-index: 2;
+    /* Z index in the before pseudo selector because that's what we want over it */
+}
+
+.project:hover .project__wrapper:before {
+    /* When we hover over the project, we want to targer the before pseudo selector on the project wrapper, and this is when we will change the opacity */
+    opacity: 0.7;
+}
+
+.project:hover .project__img {
+    /* When we hover over the project, edit image by: */
+    transform: scale(1.07);
+    filter: blur(5px);
+}
+
+.project:hover .project__description {
+    /* When we over the projects that's when we want the opacity to be 1 and to see the project description */
+    opacity: 1;
+    transform: translateY(-50%);
+    /* Brings text from below to the center of screen */
+
+}
+
+.project__list {
+    padding-top: 40px
+}
+
+.project__description {
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    transform: translateY(100%);
+    max-width: 550px;
+    z-index: 3;
+    opacity: 0;
+    transition: transform 450ms, opacity 300ms;
+}
+
+.project__description--title {
+    font-size: 40px;
+}
+
+.project__description--para {
+    margin: 16px 0;
+}
+
+.project__description--link {
+    font-size: 20px;
+    margin-right: 16px;
+    text-decoration: none;
+}
+
+
+.project__description--title, 
+.project__description--sub-title,
+.project__description--para,
+.project__description--link {
+    text-align: left;
+    color: white
+}
